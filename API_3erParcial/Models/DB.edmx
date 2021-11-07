@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bodega">
+          <Key>
+            <PropertyRef Name="BodegaID" />
+          </Key>
+          <Property Name="BodegaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_producto" Type="int" />
+          <Property Name="Nombre_producto" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre_proveedor" Type="varchar" MaxLength="100" />
+          <Property Name="Stock" Type="int" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductosID" />
+          </Key>
+          <Property Name="ProductosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Fecha_ingreso" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="ProveedoresID" />
+          </Key>
+          <Property Name="ProveedoresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="60" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="70" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="ReporteID" />
+          </Key>
+          <Property Name="ReporteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductoID" Type="int" />
+          <Property Name="Status_producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProveedorID" Type="int" />
+          <Property Name="Status_proveedor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DB_finalModelStoreContainer">
+          <EntitySet Name="Bodega" EntityType="Self.Bodega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reporte" EntityType="Self.Reporte" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_finalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bodega">
+          <Key>
+            <PropertyRef Name="BodegaID" />
+          </Key>
+          <Property Name="BodegaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_producto" Type="Int32" />
+          <Property Name="Nombre_producto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_proveedor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductosID" />
+          </Key>
+          <Property Name="ProductosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_ingreso" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Proveedores">
+          <Key>
+            <PropertyRef Name="ProveedoresID" />
+          </Key>
+          <Property Name="ProveedoresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Correo" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reporte">
+          <Key>
+            <PropertyRef Name="ReporteID" />
+          </Key>
+          <Property Name="ReporteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductoID" Type="Int32" />
+          <Property Name="Status_producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProveedorID" Type="Int32" />
+          <Property Name="Status_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DB_finalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bodega" EntityType="Self.Bodega" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+          <EntitySet Name="Reporte" EntityType="Self.Reporte" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_finalModelStoreContainer" CdmEntityContainer="DB_finalEntities">
+          <EntitySetMapping Name="Bodega">
+            <EntityTypeMapping TypeName="DB_finalModel.Bodega">
+              <MappingFragment StoreEntitySet="Bodega">
+                <ScalarProperty Name="BodegaID" ColumnName="BodegaID" />
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+                <ScalarProperty Name="Nombre_producto" ColumnName="Nombre_producto" />
+                <ScalarProperty Name="Nombre_proveedor" ColumnName="Nombre_proveedor" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="DB_finalModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ProductosID" ColumnName="ProductosID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedores">
+            <EntityTypeMapping TypeName="DB_finalModel.Proveedores">
+              <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="ProveedoresID" ColumnName="ProveedoresID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reporte">
+            <EntityTypeMapping TypeName="DB_finalModel.Reporte">
+              <MappingFragment StoreEntitySet="Reporte">
+                <ScalarProperty Name="ReporteID" ColumnName="ReporteID" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Status_producto" ColumnName="Status_producto" />
+                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+                <ScalarProperty Name="Status_proveedor" ColumnName="Status_proveedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
